@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<img src="{% static 'images/peta.png' %}">
+<a href="{% url 'info2' %}">Main Page2</a>
+</body>
+{% block 'body'%}
+{% endblock%}
+</html>
