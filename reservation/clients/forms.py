@@ -1,8 +1,23 @@
+import django.core.exceptions
 from django import forms
+from .models import ClientTypes, Client, Product, Order,ClientTypes
 
-CATEGORY_CHOICES = [(1, 'Food'), (2, 'Snack'), (3, 'Drinks'), (4, 'Hardware')]
-class ProductForm(forms.Form):
-    product_name=forms.CharField(max_length=1000)
-    category=forms.ChoiceField(choices=CATEGORY_CHOICES)
-    description=forms.ChoiceField(widget=forms.Textarea)
-    rating=forms.IntegerField(min_value=1, max_value=5)
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = ClientTypes
+        fields = '__all__'
+
+class ClientTypesForm(forms.ModelForm):
+    class Meta:
+        model = ClientTypes
+        fields = '__all__'
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = '__all__'
