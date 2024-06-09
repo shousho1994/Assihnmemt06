@@ -29,7 +29,11 @@ def add_client(request):
         form = ClientForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('client_list')  # Assuming you have a URL pattern named client_list for displaying clients
+            if 'client_count' in request.session:
+                request.session['client_count'] += 1
+            else:
+                request.session['client_count'] = 1
+            return redirect('add_client.html')
     else:
         form = ClientForm()
     return render(request, 'add_client.html', {'form': form})
